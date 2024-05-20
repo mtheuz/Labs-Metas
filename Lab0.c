@@ -39,15 +39,20 @@ int main(void)
             sentido_direita_esquerda = 0;
         }
 
-        while (sentido_direita_esquerda) {
+        while (sentido_direita_esquerda == 1) {
             *LEDR_ptr = *LEDR_ptr + LEDR_BASE;
             usleep(10000);
         }
 
-        while (!sentido_direita_esquerda) {
+        while (!sentido_direita_esquerda == 0) {
             *LEDR_ptr = *LEDR_ptr - LEDR_BASE;
             usleep(10000);
         }
     }
+    if ( munmap ( LW_virtual , LW_BRIDGE_SPAN ) != 0) {
+        printf (" ERROR : munmap () failed ...\ n");
+        return ( -1) ;
+
+    close (fd) ;
     return 0;
 }
