@@ -28,14 +28,14 @@ int main(void)
     *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
 
     while (1) {
-        bool sentido_direita_esquerda = true;
+        sentido_direita_esquerda = 1;
 
         if (*LEDR_ptr == *LW_virtual) {
-            sentido_direita_esquerda = true;
+            sentido_direita_esquerda = 1;
         }
 
         if (*LEDR_ptr == LW_virtual + 9*(LEDR_BASE)) {
-            sentido_direita_esquerda = false;
+            sentido_direita_esquerda = 0;
         }
 
         while (sentido_direita_esquerda) {
