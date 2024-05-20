@@ -25,7 +25,7 @@ int main(void)
     }
 
     // Set virtual address pointer to I/O port
-    LEDR_ptr = (volatile int *)(LW_virtual + LEDR_BASE);
+    LEDR_ptr = (volatile int *)(LW_virtual + LEDR_BASE);/
     *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
 
     while (1) {
@@ -40,19 +40,14 @@ int main(void)
         }
 
         while (sentido_direita_esquerda == 1) {
-            *LEDR_ptr = *LEDR_ptr + LEDR_BASE;
+            *LEDR_ptr = *LEDR_ptr + 1;
             usleep(10000);
         }
 
         while (!sentido_direita_esquerda == 0) {
-            *LEDR_ptr = *LEDR_ptr - LEDR_BASE;
+            *LEDR_ptr = *LEDR_ptr - 1;
             usleep(10000);
         }
     }
-    if ( munmap ( LW_virtual , LW_BRIDGE_SPAN ) != 0) {
-        printf (" ERROR : munmap () failed ...\ n");
-        return ( -1) ;
-
-    close (fd) ;
     return 0;
 }
