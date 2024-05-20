@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <sys/mman.h>
 #include "../../LabExemples/auxFiles/address_map_arm.h"
 
@@ -28,7 +29,7 @@ int main(void)
     *LEDR_ptr = *LEDR_ptr + 1; // Add 1 to the I/O register
 
     while (1) {
-        sentido_direita_esquerda = 1;
+        int sentido_direita_esquerda = 1;
 
         if (*LEDR_ptr == *LW_virtual) {
             sentido_direita_esquerda = 1;
