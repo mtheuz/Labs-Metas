@@ -30,23 +30,20 @@ int main(void)
 
     while (1) {
         int sentido_direita_esquerda = 1;
-
-         if (*LEDR_ptr == *(volatile int *)(LW_virtual)) {
-            sentido_direita_esquerda = 1;
-        }
-
-        if (*LEDR_ptr == *(volatile int *)(LW_virtual + 9 * LEDR_BASE)) {
-            sentido_direita_esquerda = 0;
-        }
-
         while (sentido_direita_esquerda == 1) {
             *LEDR_ptr = *LEDR_ptr + 1;
             usleep(10000);
+            if (*LEDR_ptr == *(volatile int *)(LW_virtual)) {
+                sentido_direita_esquerda = 0;
+            }
         }
 
         while (!sentido_direita_esquerda == 0) {
             *LEDR_ptr = *LEDR_ptr - 1;
             usleep(10000);
+            if (*LEDR_ptr == *(volatile int *)(LW_virtual + 9 * LEDR_BASE)) {
+            sentido_direita_esquerda = 0;
+        }
         }
     }
     return 0;
