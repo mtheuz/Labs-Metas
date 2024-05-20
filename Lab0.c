@@ -31,12 +31,12 @@ int main(void)
     while (1) {
         int sentido_direita_esquerda = 1;
 
-        if (*LEDR_ptr == *LW_virtual) {
-            sentido_direita_esquerda = 1;
+         if (*LEDR_ptr == *(volatile int *)(LW_virtual)) {
+            sentido_direita_esquerda = true;
         }
 
-        if (*LEDR_ptr == LW_virtual + 9*(LEDR_BASE)) {
-            sentido_direita_esquerda = 0;
+        if (*LEDR_ptr == *(volatile int *)(LW_virtual + 9 * LEDR_BASE)) {
+            sentido_direita_esquerda = false;
         }
 
         while (sentido_direita_esquerda) {
