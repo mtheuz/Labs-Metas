@@ -2,6 +2,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
+#include "../../LabExemples/auxFiles/address_map_arm.h"
 #define SEGMENT_1_BASE 0x00000020
 #define SEGMENT_2_BASE 0x00000030
 #define SEGMENT_SPAN 0x20
@@ -41,8 +42,7 @@ int main(void) {
         printf("ERRO: não foi possível abrir \"/dev/mem\"...\n");
         return (-1);
     }
-    size_t total_span = (SEGMENT_2_BASE + SEGMENT_SPAN - SEGMENT_1_BASE) + KEY_SPAN;
-    LW_virtual = mmap(NULL, total_span, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, SEGMENT_1_BASE);
+    LW_virtual = mmap(NULL, LW_BRIDGE_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, LW_BRIDGE_BASE);
     if (LW_virtual == MAP_FAILED) {
         printf("ERRO: mmap() falhou...\n");
         close(fd);
