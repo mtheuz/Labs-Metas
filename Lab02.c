@@ -23,7 +23,7 @@ int char_to_segment(char c) {
 
 void display_message(volatile int *seg_base, const char *message, int length) {
     int i = 0;
-    for (i; i < length; ++i) {
+    for (i; i < length; i+=8) {
         int segment = char_to_segment(message[i]);
         *(seg_base + i) = segment;
     }
