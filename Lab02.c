@@ -41,8 +41,8 @@ int main(void) {
         printf("ERRO: não foi possível abrir \"/dev/mem\"...\n");
         return (-1);
     }
-
-    LW_virtual = mmap(NULL, (SEGMENT_2_BASE + SEGMENT_SPAN - SEGMENT_1_BASE) + KEY_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, SEGMENT_1_BASE);
+    size_t total_span = (SEGMENT_2_BASE + SEGMENT_SPAN - SEGMENT_1_BASE) + KEY_SPAN;
+    LW_virtual = mmap(NULL, total_span, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, SEGMENT_1_BASE);
     if (LW_virtual == MAP_FAILED) {
         printf("ERRO: mmap() falhou...\n");
         close(fd);
