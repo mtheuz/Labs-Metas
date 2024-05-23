@@ -25,7 +25,8 @@ void display_message(volatile int *seg_base, const char *message, int length) {
     int i = 0;
     for (i; i < length; ++i) {
         int segment = char_to_segment(message[i]);
-        *(seg_base + i) = segment;
+        *seg_base <<= 7;
+        *(seg_base) = segment;
     }
 }
 
@@ -62,7 +63,6 @@ int main(void) {
 
         if (running) {
             display_message(SEG1_ptr, &message[idx], 6);
-            display_message(&message[idx], 2);
             display_message(SEG2_ptr, &message[idx + 4], 4);
 
             idx = (idx + 1) % msg_len;
