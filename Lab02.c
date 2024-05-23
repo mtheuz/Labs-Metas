@@ -43,7 +43,7 @@ int main(void) {
         return (-1);
     }
 
-    LW_virtual = mmap(NULL, SEGMENT_SPAN + KEY_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, SEGMENT_1_BASE);
+    LW_virtual = mmap(NULL, (SEGMENT_2_BASE + SEGMENT_SPAN - SEGMENT_1_BASE) + KEY_SPAN, (PROT_READ | PROT_WRITE), MAP_SHARED, fd, SEGMENT_1_BASE);
     if (LW_virtual == MAP_FAILED) {
         printf("ERRO: mmap() falhou...\n");
         close(fd);
