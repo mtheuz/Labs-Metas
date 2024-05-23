@@ -69,7 +69,7 @@ int main(void) {
         }
     }
 
-    if (munmap(LW_virtual != 0) {
+    if (munmap(LW_virtual != 0)) {
         printf("ERRO: munmap() falhou...\n");
         return (-1);
     }
