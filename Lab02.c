@@ -11,7 +11,7 @@ int char_to_segment(char c) {
         case 'b': return 0b01111100;
         case 'l': return 0b00111000;
         case '-': return 0b01000000;
-        case 'S': return 0b01110110;
+        case 'S': return 0b01011011;
         case 'd': return 0b01111010;
         case 't': return 0b01111000;
         case 'p': return 0b01110011;
@@ -72,6 +72,5 @@ int main(void) {
     imunmap(LW_virtual, LW_BRIDGE_SPAN);
     close(fd);
 
-    close(fd);
     return 0;
 }
