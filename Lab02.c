@@ -3,19 +3,15 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include "../../LabExemples/auxFiles/address_map_arm.h"
-#define SEGMENT_1_BASE 0x00000020
-#define SEGMENT_2_BASE 0x00000030
-#define SEGMENT_SPAN 0x20
-#define KEY_BASE 0x00000050
-#define KEY_SPAN 0x10
+
 
 int char_to_segment(char c) {
     switch(c) {
         case 'P': return 0b01110011;
         case 'b': return 0b01111100;
         case 'l': return 0b00111000;
-        case '-': return 0b00000001;
-        case 'S': return 0b01011011;
+        case '-': return 0b01000000;
+        case 'S': return 0b01110110;
         case 'd': return 0b01111010;
         case 't': return 0b01111000;
         case 'p': return 0b01110011;
@@ -49,8 +45,8 @@ int main(void) {
         return (-1);
     }
 
-    SEG1_ptr = (volatile int *) (LW_virtual + SEGMENT_1_BASE);
-    SEG2_ptr = (volatile int *) (LW_virtual + SEGMENT_2_BASE);
+    SEG1_ptr = (volatile int *) (LW_virtual + HEX3_HEX0_BASE);
+    SEG2_ptr = (volatile int *) (LW_virtual + HEX5_HEX4_BASE);
     KEY_ptr = (volatile int *) (LW_virtual + KEY_BASE);
 
     const char message[] = "Pbl-Sdtp02";
@@ -65,8 +61,8 @@ int main(void) {
         }
 
         if (running) {
-            display_message(SEG1_ptr, &message[idx], 4);
-            display_message(SEG2_ptr, &message[idx + 4], 4);
+            display_message(SEG1_ptr, &message[idx], 2);
+            display_message(SEG2_ptr, &message[idx + 2], 2);
 
             idx = (idx + 1) % msg_len;
             usleep(500000); 
