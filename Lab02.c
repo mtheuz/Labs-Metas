@@ -69,10 +69,8 @@ int main(void) {
         }
     }
 
-    if (munmap(LW_virtual,LW_BRIDGE_SPAN) != 0)) {
-        printf("ERRO: munmap() falhou...\n");
-        return (-1);
-    }
+    imunmap(LW_virtual, LW_BRIDGE_SPAN);
+    close(fd);
 
     close(fd);
     return 0;
