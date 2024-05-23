@@ -2,11 +2,10 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include "../../LabExemples/auxFiles/address_map_arm.h"
-#define SEGMENT_1_BASE 0xFF200020
-#define SEGMENT_2_BASE 0xFF200030
+#define SEGMENT_1_BASE 0x00000020
+#define SEGMENT_2_BASE 0x00000030
 #define SEGMENT_SPAN 0x20
-#define KEY_BASE 0xFF200050
+#define KEY_BASE 0x00000050
 #define KEY_SPAN 0x10
 
 int char_to_segment(char c) {
