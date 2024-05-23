@@ -49,9 +49,9 @@ int main(void) {
         return (-1);
     }
 
-    SEG1_ptr = (volatile int *) (LW_virtual);
-    SEG2_ptr = (volatile int *) (LW_virtual + (SEGMENT_2_BASE - SEGMENT_1_BASE));
-    KEY_ptr = (volatile int *) (LW_virtual + (KEY_BASE - SEGMENT_1_BASE));
+    SEG1_ptr = (volatile int *) (LW_virtual + SEGMENT_1_BASE);
+    SEG2_ptr = (volatile int *) (LW_virtual + SEGMENT_2_BASE);
+    KEY_ptr = (volatile int *) (LW_virtual + KEY_BASE);
 
     const char message[] = "Pbl-Sdtp02";
     int msg_len = sizeof(message) - 1;
