@@ -7,9 +7,9 @@
 
 int main(void)
 {
-    volatile int *   DATA_A_PTR;   // Opcode e endereçamento do Banco
-    volatile int *   DATA_B_PTR;   // Dados
-    volatile int * START_PTR; // Controle modulo gerador de pulso
+    volatile int *DATA_A_PTR;   // Opcode e endereçamento do Banco
+    volatile int *DATA_B_PTR;   // Dados
+    volatile int *START_PTR; // Controle modulo gerador de pulso
 
     int fd = -1;            
     void *LW_virtual;       
