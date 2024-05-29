@@ -7,9 +7,13 @@
 
 int main(void)
 {
-    volatile int *LEDR_ptr; 
+    volatile int *   DATA_A_PTR;   // Opcode e endereçamento do Banco
+    volatile int *   DATA_B_PTR;   // Dados
+    volatile int * START_PTR; // Controle modulo gerador de pulso
+
     int fd = -1;            
     void *LW_virtual;       
+
     if ((fd = open("/dev/mem", (O_RDWR | O_SYNC))) == -1) {
         printf("ERROR: could not open \"/dev/mem\"...\n");
         return -1;
@@ -22,17 +26,15 @@ int main(void)
         return -1;
     }
     
-    LEDR_ptr = (volatile int *)(LW_virtual + LEDR_BASE);
-    *LEDR_ptr = 0x1;
-    while (1) {
+    DATA_A_PTR = (unsigned int *) (LW_virtual + DATA_A);
+    DATA_B_PTR = (unsigned int *) (LW_virtual + DATA_B);   
+    START_PTR = (unsigned int *) (LW_virtual + START);
 
-        for (; *LEDR_ptr < 0x200; *LEDR_ptr <<= 1) {
-            usleep(100000); 
-        }
-        for (; *LEDR_ptr > 0x1; *LEDR_ptr >>= 1) {
-            usleep(100000); 
-        }
-    }
+    *START_PTR = 0;
+    *DATA_A_PTR = 0b0;
+    *DATA_B_PTR = 0b0000011;
+    *START_PTR = 1;
+    *START_PTR = 0;
 
     munmap(LW_virtual, LW_BRIDGE_SPAN);
     close(fd);
