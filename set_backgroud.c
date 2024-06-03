@@ -26,9 +26,9 @@ int main(void)
         return -1;
     }
     
-    DATA_A_PTR = (unsigned int *) (LW_virtual + DATA_A);
-    DATA_B_PTR = (unsigned int *) (LW_virtual + DATA_B);   
-    START_PTR = (unsigned int *) (LW_virtual + START);
+    DATA_A_PTR = (volatile int *) (LW_virtual + DATA_A);
+    DATA_B_PTR = (volatile int *) (LW_virtual + DATA_B);   
+    START_PTR = (volatile int *) (LW_virtual + START);
 
     *START_PTR = 0;
     *DATA_A_PTR = 0b0;
