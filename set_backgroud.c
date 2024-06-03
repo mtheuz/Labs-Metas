@@ -24,6 +24,7 @@ int main(void)
         return -1;
     }
 
+    // Map the Lightweight bridge
     LW_virtual = mmap(NULL, LW_BRIDGE_SPAN, PROT_READ | PROT_WRITE, MAP_SHARED, fd, LW_BRIDGE_BASE);
     if (LW_virtual == MAP_FAILED) {
         printf("ERROR: mmap() failed...\n");
@@ -39,6 +40,10 @@ int main(void)
     *START_PTR = 0;
     *DATA_A_PTR = 0b0;
     *DATA_B_PTR = 0x00000f1f;
+
+    *DATA_A_ptr = 0b000010000; /*reg:00001 ; opcode: 0000*/ 
+    *DATA_B_ptr = 0b100000111010000011101000001111;
+
     *START_PTR = 1;
 
 
