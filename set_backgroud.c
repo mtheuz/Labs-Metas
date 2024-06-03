@@ -5,6 +5,10 @@
 #include <unistd.h>
 #include "../../LabExemples/auxFiles/address_map_arm.h"
 
+#define DATA_A_BASE  0x80
+#define DATA_B_BASE  0x70
+#define START_BASE 0xc0
+
 int main(void)
 {
     volatile int *DATA_A_PTR;   // Pointer to DATA_A
