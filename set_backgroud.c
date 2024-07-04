@@ -35,11 +35,11 @@ int main(void)
     DATA_A_PTR = (volatile int *) (LW_virtual + DATA_A_BASE);
     DATA_B_PTR = (volatile int *) (LW_virtual + DATA_B_BASE);   
     START_PTR = (volatile int *) (LW_virtual + START_BASE);
-
+    
 
     *START_PTR = 0;
     *DATA_A_PTR = 0b0;
-    *DATA_B_PTR = 0x00000f1f;
+    *DATA_B_PTR = 0x11100000000;
 
     *DATA_A_ptr = 0b000010000; /*reg:00001 ; opcode: 0000*/ 
     *DATA_B_ptr = 0b100000111010000011101000001111;
