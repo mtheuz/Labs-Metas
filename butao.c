@@ -2,8 +2,9 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include "../../LabExemples/auxFiles/address_map_arm.h"
 #define KEY_BASE 0x00000050
+#define LW_BRIDGE_BASE 0xFF200000
+#define LW_BRIDGE_SPAN 0x00005000
 
 
 int main(void) {
