@@ -389,7 +389,7 @@ set_sprite_pixel_color(387, 2, 2, 2);
 set_sprite_pixel_color(388, 2, 2, 2);
 set_sprite_pixel_color(389, 2, 2, 2);
 set_sprite_pixel_color(390, 2, 2, 2);
-set_sprite_pixel_color(391, 2, 2, 2);
+set_sprite_pixel_color(391, 2, 2, 2); 
 set_sprite_pixel_color(392, 2, 2, 2);
 set_sprite_pixel_color(393, 2, 2, 2);
 set_sprite_pixel_color(394, 2, 2, 2);
